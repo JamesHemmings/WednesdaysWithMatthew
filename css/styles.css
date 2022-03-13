@@ -1,0 +1,49 @@
+.navbar-brand{
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-right: 50px;
+}
+
+#nav{
+  background-color: black;
+}
+#bg-image{
+display: flex;
+width: 900px;
+height: auto;
+margin: auto;
+}
+
+#carouselExampleControls{
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding: 50px;
+}
+.spotify-carousel{
+  padding: 0;
+  text-align: center;
+}
+.episode-artwork{
+  padding: 25px;
+  border-radius: 10%;
+}
+.episode-artwork:hover{
+  transform: scale(1.05);
+  opacity: 0.5;
+}
+
+footer{
+  padding: 50px;
+}
+a{
+  color: black;
+}
+a:hover{
+  color: gray;
+}
+#my-store-70893794{
+  padding: 50px;
+  margin: auto;
+  width: 100%;
+}
