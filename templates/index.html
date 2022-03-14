@@ -13,12 +13,14 @@
       <img src="{{episodes[0]['images'][1]['url']}}" class="episode-artwork" alt="...">
             </a>
         <p>{{episodes[0]['release_date']}}</p>
+        <p>{{' '.join(episodes[0]['description'].split()[0:150])}}...</p>
     </div>
       {% for episode in episodes[1:] %}
     <div class="carousel-item">
         <h2>{{episode['name']}}</h2>
       <img src="{{episode['images'][1]['url']}}" class="episode-artwork" alt="...">
         <p>{{episode['release_date']}}</p>
+        <p>{{' '.join(episode['description'].split()[0:150])}}...</p>
     </div>
       {% endfor %}
   </div>
