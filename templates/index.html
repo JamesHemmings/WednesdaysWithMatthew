@@ -1,36 +1,35 @@
 {% include "header.html" %}
-  <!-- background art work -->
-  <div class="container-fluid">
+<!-- background art work -->
+<div class="container-fluid">
     <img class="" id="bg-image" src="{{ url_for('static', filename='img/WWM_COVER.png')}}" alt="bg">
 
-  </div>
-  <!-- episode playlist carousel -->
-  <div class="container-fluid spotify-carousel">
-    <div id="carouselExampleControls" class="carousel slide" data-ride="false">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <h2>WWM Ep 59 feat. Jack</h2>
-          <img class="episode-artwork" src="https://images.rss.com/wwmatthew/400/20220120_040157_4091a98c252a669dc849024e4530ec68.jpg" alt="dog-profile">
-          <p>Jan 19 2022</p>
-        </div>
-        <div class="carousel-item">
-          <h2>WWM Ep 59 feat. Jack</h2>
-          <img class="episode-artwork" src="https://images.rss.com/wwmatthew/400/20220120_040157_4091a98c252a669dc849024e4530ec68.jpg" alt="dog-profile">
-          <p>Jan 19 2022
-          <p>
-        </div>
-
-
-      </div>
-      <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </button>
+</div>
+<!-- episode playlist carousel -->
+<div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <h2>{{episodes[0]['name']}}</h2>
+        <a href="{{episodes[0]['external_urls']['spotify']}}">
+      <img src="{{episodes[0]['images'][1]['url']}}" class="episode-artwork" alt="...">
+            </a>
+        <p>{{episodes[0]['release_date']}}</p>
     </div>
+      {% for episode in episodes[1:] %}
+    <div class="carousel-item">
+        <h2>{{episode['name']}}</h2>
+      <img src="{{episode['images'][1]['url']}}" class="episode-artwork" alt="...">
+        <p>{{episode['release_date']}}</p>
+    </div>
+      {% endfor %}
   </div>
+ <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-target="#carouselExampleControls" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </button>
+</div>
 
 {% include "footer.html" %}

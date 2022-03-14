@@ -13,4 +13,4 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
 
 playlists = sp.user_playlists('spotify')
 
-print(sp.show_episodes(show_id='4uwiYvjNeIkafWJAx13CLc')['items'][0])
+episodes = sp.show_episodes(show_id='4uwiYvjNeIkafWJAx13CLc')['items']
