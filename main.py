@@ -18,12 +18,9 @@ def home():
     return render_template('index.html', episodes=episodes)
 
 
-@app.route('/search', methods=['GET', 'POST'])
-def search():
-    if request.method == "POST":
-        data = request.form['search_entry']
-        print(data)
-        return redirect(url_for('home'))
+@app.route('/search/<search_entry>', methods=['GET', 'POST'])
+def search(search_entry):
+    print(search_entry)
 
 
 @app.route('/store')
