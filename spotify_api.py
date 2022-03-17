@@ -13,4 +13,11 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
 
 playlists = sp.user_playlists('spotify')
 
-episodes = sp.show_episodes(show_id='4uwiYvjNeIkafWJAx13CLc')['items']
+podcast = sp.show_episodes(show_id='4uwiYvjNeIkafWJAx13CLc')
+episodes = podcast['items']
+while podcast['next']:
+    episodes.extend(sp.next(podcast)['items'])
+    podcast = sp.next(podcast)
+
+
+
