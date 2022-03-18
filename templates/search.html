@@ -1,0 +1,27 @@
+{% include "header.html" %}
+<div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+        {% for episode in search_results %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm" style="outline-style: solid; outline-width: thin;height: 550px;">
+            <img src="{{episode['images'][1]['url']}}" class="card-img-top" style="padding:10px;" alt="...">
+
+            <div class="card-body">
+              <p class="card-text">{{' '.join(episode['description'].split()[0:30])}}...</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">{{episode['release_date']}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% include "footer.html" %}

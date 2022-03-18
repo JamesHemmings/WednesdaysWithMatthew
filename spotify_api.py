@@ -21,13 +21,12 @@ while podcast['next']:
 
 
 def search_episodes(search_term):
+    results = []
     for episode in episodes:
         for key in episode:
             if search_term.lower() in str(episode[key]).lower():
-                print("word found")
-                print(episode)
-                print(episodes.index(episode))
+                results.append(episode)
                 break
-
+    return results
 
 
