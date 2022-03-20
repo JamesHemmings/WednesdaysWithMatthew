@@ -20,13 +20,11 @@ while podcast['next']:
     podcast = sp.next(podcast)
 
 
-def search_episodes(search_term):
+def search_episodes(search_term, episode_list):
     results = []
-    for episode in episodes:
+    for episode in episode_list:
         for key in episode:
             if search_term.lower() in str(episode[key]).lower():
                 results.append(episode)
                 break
     return results
-
-

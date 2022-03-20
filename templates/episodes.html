@@ -3,9 +3,9 @@
     <div class="container">
 
       <div class="row">
-        {% for episode in search_results %}
+        {% for episode in episodes %}
 
-        <div class="col-lg-4 col-md-6">
+        <div class="col-lg-4 col-md-6 ">
           <a href="{{episode['external_urls']['spotify']}}"style="text-decoration: none;">
           <div class="card mb-4 shadow-sm" style="outline-style: solid; outline-width: thin;height: 550px;">
             <img src="{{episode['images'][1]['url']}}" class="card-img-top" style="padding:10px;" alt="...">
