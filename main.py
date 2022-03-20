@@ -10,7 +10,7 @@ from datetime import datetime
 
 print(episodes[0])
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'temporarysecretkey'  # replace this with enviroment variable on deployment
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 
 EMAIL = os.environ.get("PYTHON_EMAIL")
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
