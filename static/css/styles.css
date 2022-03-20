@@ -28,8 +28,9 @@ margin: auto;
   padding: 25px;
   border-radius: 10%;
 }
-.card{
-border-radius: 20%;
+.card:hover{
+  transform: scale(1.05);
+  opacity: 0.8;
 }
 .episode-artwork:hover{
   transform: scale(1.05);
