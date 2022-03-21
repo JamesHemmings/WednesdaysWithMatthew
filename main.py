@@ -76,16 +76,19 @@ def contact():
     if form.validate_on_submit():
         print("form validated")
         print(form.name.data)
-        with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
-            connection.starttls()
-            connection.login(user=EMAIL, password=EMAIL_PASSWORD)
-            msg = f"Subject:Wednesdays With Matthew Contact Form From {form.name.data}\n\n" \
-                  f"Message:\n{form.message.data}" \
-                  f"\n\nemail: {form.email.data}"
-            connection.sendmail(from_addr=EMAIL,
-                                to_addrs="prod.homealone@gmail.com",
-                                msg=msg.encode("utf8"))
-            return render_template('contact.html', form=form, email_sent=True)
+        try:
+            with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
+                connection.starttls()
+                connection.login(user=EMAIL, password=EMAIL_PASSWORD)
+                msg = f"Subject:Wednesdays With Matthew Contact Form From {form.name.data}\n\n" \
+                      f"Message:\n{form.message.data}" \
+                      f"\n\nemail: {form.email.data}"
+                connection.sendmail(from_addr=EMAIL,
+                                    to_addrs="prod.homealone@gmail.com",
+                                    msg=msg.encode("utf8"))
+                return render_template('contact.html', form=form, email_sent=True)
+        except:
+            return "Sorry this isn't working correctly right now :("
     return render_template('contact.html', form=form)
 
 
