@@ -5,7 +5,7 @@
 
 </div>
 <!-- episode playlist carousel -->
-<div id="carouselExampleControls" class="carousel slide" style="height: 600px !important;" data-interval="false" data-ride="carousel">
+<div id="carouselExampleControls" class="carousel slide"  data-interval="false" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
         <h2>{{episodes[0]['name']}}</h2>
@@ -13,16 +13,16 @@
       <img src="{{episodes[0]['images'][1]['url']}}" class="episode-artwork" alt="...">
             </a>
         <p>{{episodes[0]['release_date']}}</p>
-        <p class="container-sm">{{' '.join(episodes[0]['description'].split()[0:60])}}...</p>
+        <p class="container-sm" style="text-align:left;">{{' '.join(episodes[0]['description'].split()[0:50])}}...</p>
     </div>
       {% for episode in episodes[1:] %}
     <div class="carousel-item">
         <h2>{{episode['name']}}</h2>
         <a href="{{episode['external_urls']['spotify']}}">
-      <img src="{{episode['images'][1]['url']}}" class="episode-artwork" alt="...">
+      <img src="{{episode['images'][1]['url']}}" class="episode-artwork " alt="...">
        </a>
         <p>{{episode['release_date']}}</p>
-        <p class="container-sm">{{' '.join(episode['description'].split()[0:60])}}...</p>
+        <p  id="description" class="container-sm" style="text-align:left;">{{' '.join(episode['description'].split()[0:60])}}...</p>
     </div>
       {% endfor %}
   </div>

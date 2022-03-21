@@ -1,5 +1,10 @@
+@media screen and ( max-width: 768px) {
+  .nav-item {
+    font-size: 100%;
+  }
+}
+
 .navbar-brand{
-  font-size: 1.5rem;
   font-weight: bold;
   padding-right: 50px;
 }
@@ -7,11 +12,30 @@
 #nav{
   background-color: black;
 }
+@media screen and ( max-width: 768px){
 #bg-image{
 display: flex;
-width: 900px;
+max-width:100%;
 height: auto;
 margin: auto;
+}
+}
+@media screen and ( min-width: 768px){
+#bg-image{
+display: flex;
+max-width:75%;
+height: 850px;
+margin: auto;
+}
+}
+@media screen and ( min-width: 768px){
+#carouselExampleControls{
+height: 600px !important;
+}
+}@media screen and ( max-width: 768px){
+#carouselExampleControls{
+height: 770px !important;
+}
 }
 
 #carouselExampleControls{
@@ -20,11 +44,13 @@ margin: auto;
   color: white;
   padding: 50px;
 }
+
 .spotify-carousel{
   padding: 0;
   text-align: center;
 }
 .episode-artwork{
+  max-width:100%;
   padding: 25px;
   border-radius: 10%;
 }
@@ -51,3 +77,4 @@ a:hover{
   margin: auto;
   width: 100%;
 }
+

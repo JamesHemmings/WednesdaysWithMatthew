@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
   <title>Wednesdays With Matthew</title>
   <!-- boot strap style sheet and javascript stuff -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -25,7 +26,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+      <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" >
         <li class="nav-item active">
           <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
         </li>
@@ -43,7 +44,7 @@
         </li>
       </ul>
           <form class="form-inline my-2 my-lg-0" method="POST", action ="/search">
-      <input class="form-control mr-sm-2" type="text" name="search_entry" placeholder="Search Episodes" aria-label="Search">
+      <input class="form-control mr-sm-2" type="text" name="search_entry" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
     </form>
     </div>
