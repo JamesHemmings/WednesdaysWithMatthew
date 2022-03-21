@@ -83,7 +83,7 @@ def contact():
                   f"Message:\n{form.message.data}" \
                   f"\n\nemail: {form.email.data}"
             connection.sendmail(from_addr=EMAIL,
-                                to_addrs="james.richard.hemmings@gmail.com",
+                                to_addrs="prod.homealone@gmail.com",
                                 msg=msg.encode("utf8"))
             return render_template('contact.html', form=form, email_sent=True)
     return render_template('contact.html', form=form)
