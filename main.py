@@ -35,7 +35,7 @@ class ContactForm(FlaskForm):
     name = StringField(validators=[DataRequired(message="is that really your name?")])
     email = EmailField(validators=[Email(message="that's not your email try harder pal!")])
     message = TextAreaField(validators=[DataRequired(message="you need to fill this out nincompoop")])
-    female = BooleanField(validators=[is_female])
+    # female = BooleanField(validators=[is_female])
     submit = SubmitField()
 
 
