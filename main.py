@@ -7,14 +7,13 @@ from wtforms.validators import DataRequired, Email, ValidationError
 import smtplib
 import os
 from datetime import datetime
+import requests
 
-print(episodes[0])
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 
-EMAIL = os.environ.get("PYTHON_EMAIL")
-EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 
+MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
 year = datetime.today().year
 
 
@@ -23,7 +22,6 @@ def inject_year():
     return dict(year=year)
 
 
-print(f'{EMAIL}\n{EMAIL_PASSWORD}')
 
 
 def is_female(form, field):
@@ -52,8 +50,6 @@ def all_episodes():
 def search():
     if request.method == 'POST' and request.form["search_entry"]:
         search_results = search_episodes(search_term=request.form["search_entry"], episode_list=episodes)
-        print(request.form["search_entry"])
-        print(search_results)
         if search_results:
             return render_template('search.html', search_results=search_results)
     return redirect(url_for('home'))
@@ -73,21 +69,20 @@ def about():
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
-        print("form validated")
-        print(form.name.data)
         try:
-            with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
-                connection.starttls()
-                connection.login(user=EMAIL, password=EMAIL_PASSWORD)
-                msg = f"Subject:Wednesdays With Matthew Contact Form From {form.name.data}\n\n" \
-                      f"Message:\n{form.message.data}" \
-                      f"\n\nemail: {form.email.data}"
-                connection.sendmail(from_addr=EMAIL,
-                                    to_addrs="prod.homealone@gmail.com",
-                                    msg=msg.encode("utf8"))
-                return render_template('contact.html', form=form, email_sent=True)
-        except:
-            return "Sorry this isn't working correctly right now :("
+            response = requests.post(
+                "https://api.mailgun.net/v3/www.wednesdays-with-matthew.com/messages",
+                auth=("api", MAILGUN_API_KEY),
+                data={"from": "Poop <Contact@wednesdays-with-matthew.com>",
+                      "to": ["james.richard.hemmings@gmail.com"],
+                      "subject": f"contact form message from {form.name.data}",
+                      "text": f"{form.message.data}\nemail: {form.email.data}"})
+
+            response.raise_for_status()
+            return render_template('contact.html', form=form, email_sent=True)
+        except requests.exceptions.HTTPError:
+            return "Sorry this isn't working correctly right now :( probably because I don't want to pay for mailgun api"
+
     return render_template('contact.html', form=form)
 
 
