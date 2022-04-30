@@ -12,7 +12,6 @@ import requests
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 
-
 MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
 year = datetime.today().year
 
@@ -20,8 +19,6 @@ year = datetime.today().year
 @app.context_processor
 def inject_year():
     return dict(year=year)
-
-
 
 
 def is_female(form, field):
@@ -52,7 +49,8 @@ def search():
         search_results = search_episodes(search_term=request.form["search_entry"], episode_list=episodes)
         if search_results:
             return render_template('search.html', search_results=search_results)
-    return redirect(url_for('home'))
+        else:
+            return render_template('search.html')
 
 
 @app.route('/store')
